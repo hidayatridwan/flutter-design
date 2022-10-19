@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login/components/rounded_button.dart';
 import 'package:flutter_login/components/rounded_input_field.dart';
 import 'package:flutter_login/constants.dart';
 import 'package:flutter_login/screens/login/components/background.dart';
@@ -31,9 +32,48 @@ class Body extends StatelessWidget {
           ),
           RoundedPasswordField(
             onChanged: (value) {},
+          ),
+          RoundedButton(
+            text: 'LOGIN',
+            press: () {},
+          ),
+          AlreadyHaveAnAccountCheck(
+            login: true,
+            press: () {},
           )
         ],
       ),
+    );
+  }
+}
+
+class AlreadyHaveAnAccountCheck extends StatelessWidget {
+  const AlreadyHaveAnAccountCheck({
+    Key? key,
+    this.login = true,
+    required this.press,
+  }) : super(key: key);
+  final bool login;
+  final Function() press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          login ? 'Don\'t have an account? ' : 'Already have an account? ',
+          style: const TextStyle(color: kPrimaryColor),
+        ),
+        GestureDetector(
+          onTap: press,
+          child: Text(
+            login ? 'Sign Up' : 'Sign In',
+            style: const TextStyle(
+                color: kPrimaryColor, fontWeight: FontWeight.bold),
+          ),
+        )
+      ],
     );
   }
 }
