@@ -15,49 +15,51 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Background(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'LOGIN',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          SvgPicture.asset(
-            'assets/icons/login.svg',
-            height: size.height * 0.35,
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          RoundedInputField(
-            hintText: 'NIK',
-            icon: Icons.person,
-            onChanged: (value) {},
-          ),
-          RoundedPasswordField(
-            onChanged: (value) {},
-          ),
-          RoundedButton(
-            text: 'LOGIN',
-            press: () {},
-          ),
-          SizedBox(
-            height: size.height * 0.03,
-          ),
-          AlreadyHaveAnAccountCheck(
-            login: true,
-            press: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignupScreen(),
-                  ));
-            },
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'LOGIN',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            SvgPicture.asset(
+              'assets/icons/login.svg',
+              height: size.height * 0.35,
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            RoundedInputField(
+              hintText: 'NIK',
+              icon: Icons.person,
+              onChanged: (value) {},
+            ),
+            RoundedPasswordField(
+              onChanged: (value) {},
+            ),
+            RoundedButton(
+              text: 'LOGIN',
+              press: () {},
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            AlreadyHaveAnAccountCheck(
+              login: true,
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignupScreen(),
+                    ));
+              },
+            )
+          ],
+        ),
       ),
     );
   }
